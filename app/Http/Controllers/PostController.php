@@ -15,7 +15,7 @@ class PostController extends Controller
             "active" => 'posts',
             // "posts" => Post::all()
             // untuk eager load
-            "posts" => Post::latest()->get()
+            "posts" => Post::latest()->filter(request(['search']))->get()
         ]);
     }
     public function show(Post $post)
