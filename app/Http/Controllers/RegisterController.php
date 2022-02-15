@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -22,15 +25,13 @@ class RegisterController extends Controller
             'password' => 'required|min:5|max:255'
         ]);
 
-        dd('registrasi berhasil');
-
         // // $validatedData['password'] = bcrypt($validatedData['password']);
-        // $validatedData['password'] = Hash::make($validatedData['password']);
+        $validatedData['password'] = Hash::make($validatedData['password']);
 
-        // User::create($validatedData);
+        User::create($validatedData);
 
-        // $request->session()->flash('success', 'Registration successfull please login');
+        //$request->session()->flash('success', 'Registration successfull please login');
         
-        // return redirect('/login');
+        return redirect('/login')->with('success', 'Registration successfull please login');
     }
 }
