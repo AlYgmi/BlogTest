@@ -12,4 +12,43 @@ class LoginController extends Controller
             'active' => 'login'
         ]);
     }
+    public function authenticate(Request $request)
+    {
+         
+         $credentials = $request->validate([
+             'email' => 'required|email:dns',
+             'password' => 'required'
+         ]);
+
+         if(Auth::attempt($credentials)) {
+             $request->session()->regenerate();
+
+             return redirect()->intended('show');
+         }
+
+         return back()->with('loginError', 'Login Gagal');
+
+    }
+
+    public function logout() 
+    {
+	    return view('login.logout');
+    }
+
+    public function proses_logout(Request $request) 
+    {
+	    Auth::logout();
+        //    auth()->logout;
+            
+        //    return redirect('index') ;
+            
+            
+        // Auth::logout();
+
+         // $request->session()->invalidate();
+
+         // $request->session()->regeneratedToken();
+
+         return redirect('/');
+    }
 }
