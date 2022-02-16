@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Session\Store;
 
 class LoginController extends Controller
 {
@@ -32,12 +33,12 @@ class LoginController extends Controller
 
     }
 
-    public function logout() 
-    {
-	    return view('login.logout');
-    }
+    // public function logout() 
+    // {
+	//     return view('login.logout');
+    // }
 
-    public function proses_logout(Request $request) 
+    public function logout(Request $request) 
     {
 	    Auth::logout();
         //    auth()->logout;
@@ -45,12 +46,7 @@ class LoginController extends Controller
         //    return redirect('index') ;
             
             
-        // Auth::logout();
-
-         // $request->session()->invalidate();
-
-         // $request->session()->regeneratedToken();
-
+        // Auth::logout()
          return redirect('/');
     }
 }
