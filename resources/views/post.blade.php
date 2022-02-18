@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col" style="padding: 60px 0px">
@@ -17,7 +16,4 @@
             </div>
         </div>
     </div>
-
-    
-
 @endsection
