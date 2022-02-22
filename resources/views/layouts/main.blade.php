@@ -12,7 +12,7 @@
     {{-- manggil css --}}
     <link rel="stylesheet" href="{{ asset('css/signin.css') }}">
 
-    <title>Hello, Adit | {{ $title }}</title>
+    <title>Hello, User | {{ $title }}</title>
   </head>
   <body>
 @include('partials.navbar')
